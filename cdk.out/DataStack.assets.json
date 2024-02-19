@@ -1,7 +1,7 @@
 {
   "version": "36.0.0",
   "files": {
-    "c435390a6a3c0f4b02ba7a0a3af1f28579f2f731a2f3371e32eb6c93f6edee81": {
+    "6ef7c5189d381c611460b65eea4fbaacde909050ba10e1d6e23ea1a6c2780ffc": {
       "source": {
         "path": "DataStack.template.json",
         "packaging": "file"
@@ -9,7 +9,7 @@
       "destinations": {
         "current_account-current_region": {
           "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
-          "objectKey": "c435390a6a3c0f4b02ba7a0a3af1f28579f2f731a2f3371e32eb6c93f6edee81.json",
+          "objectKey": "6ef7c5189d381c611460b65eea4fbaacde909050ba10e1d6e23ea1a6c2780ffc.json",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
         }
       }
