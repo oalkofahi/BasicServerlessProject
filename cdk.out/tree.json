@@ -210,6 +210,48 @@
                       "fqn": "aws-cdk-lib.aws_iam.CfnRole",
                       "version": "2.128.0"
                     }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "LambdaStack/HelloLambda/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "LambdaStack/HelloLambda/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "s3:ListAllMyBuckets",
+                                    "s3:ListBucket"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": "*"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "HelloLambdaServiceRoleDefaultPolicyB69CB62C",
+                            "roles": [
+                              {
+                                "Ref": "HelloLambdaServiceRoleE071F162"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.128.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.128.0"
+                    }
                   }
                 },
                 "constructInfo": {
@@ -253,16 +295,17 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "9dbd483fdf33c4861f26e805ef220bae69926728d990e8ef276f754d02636b67.zip"
+                      "s3Key": "4af73f2569d0c8e59b5645202944c8e5ef7cc82447a17a434a7fbb9a4b701160.zip"
                     },
                     "environment": {
                       "variables": {
                         "TABLE_NAME": {
                           "Fn::ImportValue": "DataStack:ExportsOutputRefSpacesTable8A9973559FB4B87D"
-                        }
+                        },
+                        "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
                       }
                     },
-                    "handler": "hello.main",
+                    "handler": "index.handler",
                     "role": {
                       "Fn::GetAtt": [
                         "HelloLambdaServiceRoleE071F162",
@@ -279,7 +322,7 @@
               }
             },
             "constructInfo": {
-              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "fqn": "aws-cdk-lib.aws_lambda_nodejs.NodejsFunction",
               "version": "2.128.0"
             }
           },
