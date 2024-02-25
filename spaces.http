@@ -10,3 +10,6 @@ content-type: application/json
     "location": "USA"
 }
 ###
+
+GET https://nvxkioxo35.execute-api.us-east-1.amazonaws.com/prod/spaces?id=34
+###

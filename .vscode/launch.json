@@ -5,6 +5,7 @@
     // Very important to specify the AWS_REGION and any env variable names you are using like TABLE_NAME
     "version": "0.2.0",
     "configurations": [
+
         {
             "type": "node",
             "request": "launch",
