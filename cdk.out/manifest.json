@@ -18,7 +18,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/6ef7c5189d381c611460b65eea4fbaacde909050ba10e1d6e23ea1a6c2780ffc.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/040de311f0810c281cfbb4d29f75a1bf022b833ed27f00c0cd648241d3fcf402.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -60,6 +60,12 @@
             "data": "CDKMetadataAvailable"
           }
         ],
+        "/DataStack/Exports/Output{\"Fn::GetAtt\":[\"SpacesTable8A997355\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttSpacesTable8A997355Arn242927FE"
+          }
+        ],
         "/DataStack/Exports/Output{\"Ref\":\"SpacesTable8A997355\"}": [
           {
             "type": "aws:cdk:logicalId",
@@ -98,7 +104,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/41e405a84dea3b490ec471aefed53a85c67e71a2b5dc7f7c909a245172dacbbf.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/6f8ddd8f18ca0830e02ec300435e7b64cd607ce95b5b1f81e7675e4590e9c8ee.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -115,22 +121,22 @@
         "LambdaStack.assets"
       ],
       "metadata": {
-        "/LambdaStack/HelloLambda/ServiceRole/Resource": [
+        "/LambdaStack/SpacesLambda/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "HelloLambdaServiceRoleE071F162"
+            "data": "SpacesLambdaServiceRole3689E892"
           }
         ],
-        "/LambdaStack/HelloLambda/ServiceRole/DefaultPolicy/Resource": [
+        "/LambdaStack/SpacesLambda/ServiceRole/DefaultPolicy/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "HelloLambdaServiceRoleDefaultPolicyB69CB62C"
+            "data": "SpacesLambdaServiceRoleDefaultPolicyC1DF8F65"
           }
         ],
-        "/LambdaStack/HelloLambda/Resource": [
+        "/LambdaStack/SpacesLambda/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "HelloLambda3D9C82D6"
+            "data": "SpacesLambdaA5F923A4"
           }
         ],
         "/LambdaStack/CDKMetadata/Default": [
@@ -145,10 +151,10 @@
             "data": "CDKMetadataAvailable"
           }
         ],
-        "/LambdaStack/Exports/Output{\"Fn::GetAtt\":[\"HelloLambda3D9C82D6\",\"Arn\"]}": [
+        "/LambdaStack/Exports/Output{\"Fn::GetAtt\":[\"SpacesLambdaA5F923A4\",\"Arn\"]}": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "ExportsOutputFnGetAttHelloLambda3D9C82D6ArnAF912CE6"
+            "data": "ExportsOutputFnGetAttSpacesLambdaA5F923A4ArnE59FF2BB"
           }
         ],
         "/LambdaStack/BootstrapVersion": [
@@ -183,7 +189,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/0ed037716e7e7d4e79a98a58eadb21e456913e38f1b1ede24ab035cee5431313.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/05dbec7f0459a649688d5e7aadea42e8aea15e623e4e02230c4bbb08439fc4af.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -221,7 +227,7 @@
         "/ApiStack/SpacesApi/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "SpacesApiDeploymentE5EF4C15d792e02978e9e7956246f2c1f77fb864"
+            "data": "SpacesApiDeploymentE5EF4C151a5f20901fe9fa7df4b32463ff981ba0"
           }
         ],
         "/ApiStack/SpacesApi/DeploymentStage.prod/Resource": [
@@ -258,6 +264,24 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "SpacesApispacesGET5025F962"
+          }
+        ],
+        "/ApiStack/SpacesApi/Default/spaces/POST/ApiPermission.ApiStackSpacesApiD768BC5B.POST..spaces": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SpacesApispacesPOSTApiPermissionApiStackSpacesApiD768BC5BPOSTspaces7C30D6E4"
+          }
+        ],
+        "/ApiStack/SpacesApi/Default/spaces/POST/ApiPermission.Test.ApiStackSpacesApiD768BC5B.POST..spaces": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SpacesApispacesPOSTApiPermissionTestApiStackSpacesApiD768BC5BPOSTspaces7FB6702D"
+          }
+        ],
+        "/ApiStack/SpacesApi/Default/spaces/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SpacesApispacesPOST2152C014"
           }
         ],
         "/ApiStack/CDKMetadata/Default": [

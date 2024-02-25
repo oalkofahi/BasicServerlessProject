@@ -5,7 +5,7 @@ import { Construct } from 'constructs/lib/construct'
 
 
 interface ApiStackProps extends StackProps {
-    helloLambdaIntegration: LambdaIntegration
+    spacesLambdaIntegration: LambdaIntegration
 }
 
 // Define a new Stack
@@ -16,6 +16,7 @@ export class ApiStack extends Stack {
 
         const api = new RestApi(this, 'SpacesApi');
         const spacesResources = api.root.addResource('spaces')
-        spacesResources.addMethod('GET', props.helloLambdaIntegration) // integrates the Lambda with the GET
+        spacesResources.addMethod('GET', props.spacesLambdaIntegration) // integrates the Lambda with the GET
+        spacesResources.addMethod('POST', props.spacesLambdaIntegration) // integrates the Lambda with the POST
     }
 }

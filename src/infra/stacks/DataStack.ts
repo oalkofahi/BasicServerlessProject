@@ -14,6 +14,8 @@ export class DataStack extends Stack {
         super(scope, id, props);
 
         // We need export the table so that Lambda can read from it
+        // It is important that every DynamoDB table has a partitionkey
+        // Should the key be named "id" always? IDK!!
         this.spacesTable = new DynamoDbTable(this, 'SpacesTable', {
             partitionKey: {
                 name: 'id',

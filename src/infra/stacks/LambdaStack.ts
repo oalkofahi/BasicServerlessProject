@@ -19,29 +19,32 @@ interface LambdaStackProps extends StackProps {
 // Note that the "export" keyword makes the class availble to classes in other modules
 export class LambdaStack extends Stack {
 
-    public readonly helloLambdaIntegration: LambdaIntegration
+    //LambdaIntegration is used to integrate an AWS Lambda function to an API Gateway method.
+    public readonly spacesLambdaIntegration: LambdaIntegration
 
     constructor(scope: Construct, id: string, props: LambdaStackProps) {
         super(scope, id, props)
 
-        const helloLambda = new NodejsFunction(this, 'HelloLambda', {
+        // Note that the connection between the lambda and its functionality is done in the handler and entry fields
+        // Note how the handler can also use the environment variable we define here like the TABLE_NAME
+        const spacesLambda = new NodejsFunction(this, 'SpacesLambda', {
            runtime: Runtime.NODEJS_20_X,
            handler: 'handler',
-           entry: (join(__dirname, '..', '..', 'services', 'hello.ts')),
+           entry: (join(__dirname, '..', '..', 'services', 'spaces', 'handler.ts')),
            environment: {
             TABLE_NAME: props.spacesTable.tableName
            }
         });
 
-        helloLambda.addToRolePolicy(new PolicyStatement({
+        // We need to mka eusre that our Lambda function has privelages to write to the DynamoDB table
+        spacesLambda.addToRolePolicy( new PolicyStatement({
             effect: Effect.ALLOW,
+            resources: [props.spacesTable.tableArn],
             actions: [
-                's3:ListAllMyBuckets',
-                's3:ListBucket'
-            ],
-            resources: ["*"]
-        }));
+                'dynamoDB:PutItem'
+            ]
+        }))
 
-        this.helloLambdaIntegration = new LambdaIntegration(helloLambda);
+        this.spacesLambdaIntegration = new LambdaIntegration(spacesLambda);
     }
 }

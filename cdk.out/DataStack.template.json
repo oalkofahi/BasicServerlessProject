@@ -279,6 +279,17 @@
   }
  },
  "Outputs": {
+  "ExportsOutputFnGetAttSpacesTable8A997355Arn242927FE": {
+   "Value": {
+    "Fn::GetAtt": [
+     "SpacesTable8A997355",
+     "Arn"
+    ]
+   },
+   "Export": {
+    "Name": "DataStack:ExportsOutputFnGetAttSpacesTable8A997355Arn242927FE"
+   }
+  },
   "ExportsOutputRefSpacesTable8A9973559FB4B87D": {
    "Value": {
     "Ref": "SpacesTable8A997355"
