@@ -1,4 +1,5 @@
 import { DynamoDBClient, PutItemCommand } from "@aws-sdk/client-dynamodb";
+import { marshall } from "@aws-sdk/util-dynamodb";
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 import { v4 } from "uuid";
 
@@ -22,14 +23,19 @@ export async function postSpaces (event: APIGatewayProxyEvent, ddbClient: Dynamo
     // To access the environment of the Lambda we use process.env
     const result = await ddbClient.send(new PutItemCommand({
         TableName: process.env.TABLE_NAME,
-        Item: {
-            id: {
-                S: randomID
-            },
-            location: {
-                S: item.location
-            }
-        }
+        Item: marshall(item)
+        /* If we did not use the marshall function in the previous line
+        // We need to put the item values in the proper format and specify the data types
+        // S: defines a string type
+        */
+        // Item: {
+        //     id: {
+        //         S: randomID
+        //     },
+        //     location: {
+        //         S: item.location
+        //     }
+        // }
     }));
 
     console.log(result);

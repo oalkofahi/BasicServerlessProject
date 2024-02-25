@@ -1,4 +1,5 @@
 import { DynamoDBClient, GetItemCommand, ScanCommand } from "@aws-sdk/client-dynamodb";
+import { unmarshall } from "@aws-sdk/util-dynamodb";
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 
 
@@ -9,11 +10,9 @@ export async function getSpaces (event: APIGatewayProxyEvent, ddbClient: DynamoD
     // With no ID provided we want to create a scan operation that returns all elements
     // check querystring parameters
     if(event.queryStringParameters) {
-        console.log('QueryString found')
         // Look for id in query string
         if('id' in event.queryStringParameters) {
             const spaceId = event.queryStringParameters['id']
-            console.log(`id is: ${spaceId}`)
             // DON'T forget the await
             const getItemResponse = await ddbClient.send(new GetItemCommand({
                 TableName: process.env.TABLE_NAME,
@@ -21,11 +20,12 @@ export async function getSpaces (event: APIGatewayProxyEvent, ddbClient: DynamoD
                     'id' : {S: spaceId}
                 }
             }))
-            console.log('got response')
             if(getItemResponse.Item) {
+                // To remove the data types from the response, we can unmarshall the Item
+                const unmarshalledItem = unmarshall(getItemResponse.Item)
                 return {
                     statusCode: 200,
-                    body: JSON.stringify(getItemResponse.Item)
+                    body: JSON.stringify(unmarshalledItem)
                 }
             } else {
                 return {
@@ -48,12 +48,16 @@ export async function getSpaces (event: APIGatewayProxyEvent, ddbClient: DynamoD
     const result = await ddbClient.send(new ScanCommand({
         TableName: process.env.TABLE_NAME
     }));
-
+    // The following is to unmarshall each item in the result
+    // The ? says if we have Items
+    // map is similar to map in Python, we apply a function to each element in Items
+    // It maps each item into an unmarshalled item
+    const unmarshalledItems = result.Items?.map(item => unmarshall(item))
     console.log(result.Items);
 
     const response: APIGatewayProxyResult = {
         statusCode: 201,
-        body: JSON.stringify(result.Items)
+        body: JSON.stringify(unmarshalledItems)
     }
 
     return response;
