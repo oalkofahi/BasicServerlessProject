@@ -1,7 +1,8 @@
 import { DynamoDBClient, PutItemCommand } from "@aws-sdk/client-dynamodb";
 import { marshall } from "@aws-sdk/util-dynamodb";
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
-import { v4 } from "uuid";
+import { validateAsSpaceEntry } from "../shared/Validator";
+import { createRandomId, parseJSON } from "../shared/Utils";
 
 
 // This file has the handler for the POST request
@@ -10,11 +11,15 @@ import { v4 } from "uuid";
 export async function postSpaces (event: APIGatewayProxyEvent, ddbClient: DynamoDBClient): Promise<APIGatewayProxyResult> {
 
     // Create the ID for the new item
-    const randomID = v4();
+    const randomID = createRandomId();
     // Create the new item from the data received inside the event
-    const item = JSON.parse(event.body);
+    // we used our custom function parseJSON just to be able to distinguish JSON parsing errors from actual server errors
+    // because JSON parsing errors are caused by the client sending incorrectly formatted JSON
+    const item = parseJSON(event.body);
     // Assign the generated id to the new item
     item.id = randomID;
+    // Now we can verify if this is a valid Space entry
+    validateAsSpaceEntry(item)
 
     // make the call to DynamoDB
     // DON'T forget the await

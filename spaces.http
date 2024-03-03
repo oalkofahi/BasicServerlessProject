@@ -1,15 +1,30 @@
 
+@url = https://0cs3pgvh2f.execute-api.us-east-1.amazonaws.com/prod/
+@token = eyJraWQiOiI3amJRVTk4cGhVMVFSeTZXZXlBQkNGNHhlOVI2XC9YNUhraW5oaG1mSWExND0iLCJhbGciOiJSUzI1NiJ9.eyJvcmlnaW5fanRpIjoiYmEwYWIxODctNTJmNi00NTI1LWI5ZTItMGYxZjVhZmI1YzRiIiwic3ViIjoiOTk5ZjdlYjItMThkMy00YTEyLWI2NzEtM2YzYTk4OWVmZWZhIiwiYXVkIjoiNXB1Ym9udDJydHUzZWFkNDdnZnYzdW1hdjEiLCJldmVudF9pZCI6IjVhY2U2YWJjLWM3NjktNGRiZi1hOGExLWRmNmRmM2FhMzIyNSIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNzA5NDIzOTMxLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9GaHNtY2JCbTYiLCJjb2duaXRvOnVzZXJuYW1lIjoidGVzdGVyIiwiZXhwIjoxNzA5NDI3NTMxLCJpYXQiOjE3MDk0MjM5MzEsImp0aSI6IjA2ZDc1YzFmLWU4NWYtNGVjNC1hZmFhLWNkMGU3OGQ4YTMzMSJ9.fZ4GIsmU2jmbuBgKsL22k8iIdBW99CxT4_uISZ1WB2yxwsbmgzI251VsvCGD1NODxgAzuAtmbpYlkmvYnjqddwrBDE4ZpNXb_G37Nh-XvAFOdx4pCssbCUbTJf68SQwvniaCOlwy00WTuwdZVGuMmaluA24M_S4dhsa3loyEaBihXeCEE2DryF4BL3VX4XjSZKw0GR3x4bKW-dJq62E3cxkGPIEqKI-3FK5Y2wzEz2X4s-VGN_4hwezD5xoK993KfxEZUk3a9vONvDqI1E4Ney56lqGMe2R_vRyMMFKAanxE00mslpZNP7Fe8eiRxWHSMPu9ZOTBerYu03LSroE7MA
 
-GET https://nvxkioxo35.execute-api.us-east-1.amazonaws.com/prod/spaces
+GET {{url}}/spaces
+Authorization: {{token}}
 ###
 
 POST https://nvxkioxo35.execute-api.us-east-1.amazonaws.com/prod/spaces
 content-type: application/json
 
 {
-    "location": "USA"
+    "location": "UK"
 }
 ###
 
-GET https://nvxkioxo35.execute-api.us-east-1.amazonaws.com/prod/spaces?id=34
+GET https://nvxkioxo35.execute-api.us-east-1.amazonaws.com/prod/spaces?id=8f864bcd-d195-45bd-95d0-18d1d9b4bc9b
+###
+
+
+DELETE https://nvxkioxo35.execute-api.us-east-1.amazonaws.com/prod/spaces?id=1e7f03ab-149c-46df-815c-4189bb108565
+###
+
+PUT https://nvxkioxo35.execute-api.us-east-1.amazonaws.com/prod/spaces?id=8f864bcd-d195-45bd-95d0-18d1d9b4bc9b
+content-type: application/json
+
+{
+    "location": "New Jordan"
+}
 ###
